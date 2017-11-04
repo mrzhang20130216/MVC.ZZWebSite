@@ -1,0 +1,90 @@
+﻿<script src="~/scripts/jquery-1.8.2.min.js"></script>
+<link href="~/Content/login.css" rel="stylesheet" />
+@{
+    ViewBag.Title = "欢迎登陆";
+    Layout = null;
+}
+<script type="text/javascript">
+        $(function () {
+            $("#LoginSys").click(function () {
+                LoginSys();
+            });
+            $("#UserName").keydown(function (e) {
+                var curkey = e.which;
+                if (curkey == 13) {
+                    LoginSys();
+                    return false;
+                }
+            });
+            $("#Password").keydown(function (e) {
+                var curkey = e.which;
+                if (curkey == 13) {
+                    LoginSys();
+                    return false;
+                }
+            });
+            $("#ValidateCode").keydown(function (e) {
+                var curkey = e.which;
+                if (curkey == 13) {
+                    LoginSys();
+                    return false;
+                }
+            });
+        });
+        function LoginSys() {
+            $("#mes").html("");
+            $("#UserName").removeClass("input-validation-error");
+            $("#Password").removeClass("input-validation-error");
+            $("#ValidateCode").removeClass("input-validation-error");
+            if ($.trim($("#username").val()) == "") {
+                $("#username").addClass("input-validation-error").focus();
+                $("#mes").html("用户名不能为空！");
+                return;
+            }
+            if ($.trim($("#password").val()) == "") {
+                $("#password").addClass("input-validation-error").focus();
+                $("#mes").html("密码不能为空！");
+                return;
+            }
+            if ($.trim($("#codeC").val()) == "") {
+                $("#codeC").addClass("input-validation-error").focus();
+                $("#mes").html("验证码不能为空！");
+                return;
+            }
+            $("#Loading").show();
+
+            $.post('LoginIn', { UserName: $("#username").val(), Password: $("#password").val(), Code: $("#codeC").val() },
+            function (data) {
+                if (data.type == "1") {
+                    var url = "@Url.Action("index", "Index")";
+                    window.location = url;
+                } else {
+                    $("#mes").html(data.Messages);
+                }
+               $("#Loading").hide();
+            }, "json");
+            return false;
+        }
+
+</script>
+    <div class="top_bg">
+        <div class="center logon_por">
+            <a href="#"></a>
+            <div class="title"></div>
+            <div class="logon_box">
+                <div class="account"><i class="account_phone"></i><input id="username" name="username" type="text" maxlength="20" placeholder="请输入用户名" runat="server" /></div>
+                <div class="account"><i class="account_password"></i><input id="password" name="password" type="password" placeholder="请输入登录密码" runat="server" /></div>
+
+                <div class="co_ob">
+                    <input type="text" maxlength="6" id="codeC" name="codeC" placeholder="请输入验证码" runat="server" />
+                    
+                    <span>
+                        <img src="@Url.Action("ValidateCode","Index")" /></span>
+                    @*<img src="code.aspx" id="imgCode" onclick="javascript:changeImg();" style="cursor:pointer;width:100px;height:48px;padding-left:1px;" /></span>*@
+                </div>
+
+                <a id="LoginSys" href="javascript:void(0)" class="register_btn"><span style="width:300px;height:46px;">登陆</span></a>
+                <span id="mes"></span>
+            </div>
+        </div>
+    </div>

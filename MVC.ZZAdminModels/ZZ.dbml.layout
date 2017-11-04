@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 14.625, 17.25" name="ZZ">
+  <DataContextMoniker Name="/ZZDataContext" />
+  <nestedChildShapes>
+    <classShape Id="1d0b058d-5331-464f-966c-a5c1806565e8" absoluteBounds="2.25, 1.375, 2, 1.9068933105468751">
+      <DataClassMoniker Name="/ZZDataContext/AdminOpration" />
+      <nestedChildShapes>
+        <elementListCompartment Id="eb2e9f4a-0ddf-4794-b392-95e91314f1c0" absoluteBounds="2.265, 1.835, 1.9700000000000002, 1.346893310546875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="be796ecf-ecce-4d72-8d7b-723e48cf6fcb" absoluteBounds="0.5, 1.75, 2, 3.2004520670572916">
+      <DataClassMoniker Name="/ZZDataContext/Advert" />
+      <nestedChildShapes>
+        <elementListCompartment Id="6167056f-d8dd-473e-b6f2-db4c463c85b8" absoluteBounds="0.515, 2.21, 1.9700000000000002, 2.6404520670572915" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="04bbd34b-199d-49d6-a7af-3d40904e8cb2" absoluteBounds="2.75, 5.375, 2, 1.3525109863281251">
+      <DataClassMoniker Name="/ZZDataContext/City" />
+      <nestedChildShapes>
+        <elementListCompartment Id="7fb658b6-eea3-442d-8288-1a95bd2dee46" absoluteBounds="2.765, 5.835, 1.9700000000000002, 0.792510986328125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="73327b7a-278a-46f8-942a-fb846228c79f" absoluteBounds="2.75, 13.75, 2, 1.1677168782552094">
+      <DataClassMoniker Name="/ZZDataContext/CountryTable" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0142a138-d759-4094-8543-6507e8495255" absoluteBounds="2.765, 14.21, 1.9700000000000002, 0.60771687825520826" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="46be7362-90c1-410d-a290-e55d15a21e74" absoluteBounds="6.375, 8.625, 2, 3.7548343912760416">
+      <DataClassMoniker Name="/ZZDataContext/VisaList" />
+      <nestedChildShapes>
+        <elementListCompartment Id="22f5d45e-7291-44b1-89bf-66c9789b3963" absoluteBounds="6.39, 9.085, 1.9700000000000002, 3.1948343912760415" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="bbec872d-9c06-4368-bd4a-9bd7ca128590" absoluteBounds="8.375, 2.625, 2, 2.2764815266927085">
+      <DataClassMoniker Name="/ZZDataContext/PageInfo" />
+      <nestedChildShapes>
+        <elementListCompartment Id="692d4c36-e0fa-4cc2-8c60-332eb6ec2e38" absoluteBounds="8.39, 3.085, 1.9700000000000002, 1.7164815266927085" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="4312d895-fe0c-43cd-97da-4f336c4dbaee" absoluteBounds="5.5, 0.75, 2, 6.1571577962239576">
+      <DataClassMoniker Name="/ZZDataContext/product" />
+      <nestedChildShapes>
+        <elementListCompartment Id="888fd430-fd70-43c6-add6-e19de3ce105e" absoluteBounds="5.515, 1.21, 1.9700000000000002, 5.597157796223958" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="e91b0b62-e1e9-4e48-a7a6-7f08f10a9054" absoluteBounds="9.375, 6.625, 2, 1.9068933105468755">
+      <DataClassMoniker Name="/ZZDataContext/productComment" />
+      <nestedChildShapes>
+        <elementListCompartment Id="12b118db-7a13-4968-868a-a4d2159b2d0e" absoluteBounds="9.39, 7.085, 1.9700000000000002, 1.346893310546875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="7f222110-9799-4ba1-acd2-753ed17f443d" absoluteBounds="3.5, 8.375, 2, 3.7548343912760416">
+      <DataClassMoniker Name="/ZZDataContext/productDetails" />
+      <nestedChildShapes>
+        <elementListCompartment Id="dc02c2a9-9d41-4cc8-8a30-31bc1d0f83d7" absoluteBounds="3.515, 8.835, 1.9700000000000002, 3.1948343912760415" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="1a55d77b-c933-4d4d-be0a-0d3adec53701" absoluteBounds="9.375, 9.625, 2, 1.9068933105468737">
+      <DataClassMoniker Name="/ZZDataContext/productPics" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c7fde844-bb2c-4923-8878-077719a6bc6c" absoluteBounds="9.39, 10.085, 1.9700000000000002, 1.346893310546875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="d581c867-1824-498e-b162-b54cbd1784e4" absoluteBounds="9.375, 12.625, 2, 2.0916874186197916">
+      <DataClassMoniker Name="/ZZDataContext/productSchedule" />
+      <nestedChildShapes>
+        <elementListCompartment Id="03333845-dd7e-4f6a-9db1-4b5aed35806f" absoluteBounds="9.39, 13.085, 1.9700000000000002, 1.5316874186197915" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="6bf448b3-609c-4b5d-9052-3e1dc14efb98" absoluteBounds="2.75, 15.625, 2, 1.3525109863281237">
+      <DataClassMoniker Name="/ZZDataContext/Province" />
+      <nestedChildShapes>
+        <elementListCompartment Id="98076058-ae62-41ab-ae0b-5fff121b1ea7" absoluteBounds="2.765, 16.085, 1.9700000000000002, 0.792510986328125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="a583ec67-d1a4-4c96-a369-51882413e28f" absoluteBounds="5.375, 13.625, 2, 3.3852461751302076">
+      <DataClassMoniker Name="/ZZDataContext/Strategy" />
+      <nestedChildShapes>
+        <elementListCompartment Id="bef29e67-f02f-4fbc-bcde-3b16f6271bce" absoluteBounds="5.39, 14.085, 1.9700000000000002, 2.825246175130208" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="11cc566f-aabc-4a4d-87e1-b94ed213d21b" absoluteBounds="12.375, 5.625, 2, 1.7220992024739577">
+      <DataClassMoniker Name="/ZZDataContext/Verification" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5c357636-c162-4488-8fce-765b9054f73b" absoluteBounds="12.39, 6.085, 1.9700000000000002, 1.1620992024739583" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="1425652a-74b7-4592-9bc5-daef2cb911d4" absoluteBounds="12.375, 8.625, 2, 2.8308638509114559">
+      <DataClassMoniker Name="/ZZDataContext/VisaApplication" />
+      <nestedChildShapes>
+        <elementListCompartment Id="4acfa92b-9a8f-4c25-bbc5-e7c1de57e132" absoluteBounds="12.39, 9.085, 1.9700000000000002, 2.270863850911458" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(4.75 : 6.05125549316406); (5.5 : 6.05125549316406)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/ZZDataContext/City/City_product" />
+      <nodes>
+        <classShapeMoniker Id="04bbd34b-199d-49d6-a7af-3d40904e8cb2" />
+        <classShapeMoniker Id="4312d895-fe0c-43cd-97da-4f336c4dbaee" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(4.75 : 14.3338584391276); (5.125 : 14.3338584391276); (5.125 : 12.629834391276); (6.125 : 12.629834391276); (6.125 : 7.28215779622396); (6.5 : 7.28215779622396); (6.5 : 6.90715779622396)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/ZZDataContext/CountryTable/CountryTable_product" />
+      <nodes>
+        <classShapeMoniker Id="73327b7a-278a-46f8-942a-fb846228c79f" />
+        <classShapeMoniker Id="4312d895-fe0c-43cd-97da-4f336c4dbaee" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(4.125 : 6.72751098632813); (4.125 : 8.375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/ZZDataContext/City/City_productDetails" />
+      <nodes>
+        <classShapeMoniker Id="04bbd34b-199d-49d6-a7af-3d40904e8cb2" />
+        <classShapeMoniker Id="7f222110-9799-4ba1-acd2-753ed17f443d" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(4.75 : 16.3012554931641); (5.25 : 16.3012554931641); (5.25 : 12.879834391276); (5.875 : 12.879834391276); (5.875 : 7.53215779622396); (6.04166666666667 : 7.53215779622396 : JumpStart); (6.20833333333333 : 7.53215779622396 : JumpEnd); (7.031252 : 7.53215779622396); (7.031252 : 6.90715779622396)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/ZZDataContext/Province/Province_product" />
+      <nodes>
+        <classShapeMoniker Id="6bf448b3-609c-4b5d-9052-3e1dc14efb98" />
+        <classShapeMoniker Id="4312d895-fe0c-43cd-97da-4f336c4dbaee" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="b18946f8-1cd3-4535-8bca-1b61e9e6009f" absoluteBounds="12.125, 2.5, 2, 1.7220992024739581">
+      <DataClassMoniker Name="/ZZDataContext/Users" />
+      <nestedChildShapes>
+        <elementListCompartment Id="74caf04b-81d0-4fe2-a132-ef57a5e27b0a" absoluteBounds="12.14, 2.96, 1.9700000000000002, 1.1620992024739583" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

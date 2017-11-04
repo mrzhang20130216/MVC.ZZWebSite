@@ -1,0 +1,607 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="ZLWCCM" Class="ZZDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=.;Initial Catalog=ZLWCCM;User ID=sa" SettingsObjectName="MVC.ZZAdminModels.Properties.Settings" SettingsPropertyName="ZLWCCMConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.AdminOpration" Member="AdminOpration">
+    <Type Name="AdminOpration">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Content" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="MType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Ip" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Advert" Member="Advert">
+    <Type Name="Advert">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Title" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DataTime" Type="System.String" DbType="VarChar(11) NOT NULL" CanBeNull="false" />
+      <Column Name="UsertId" Type="System.String" DbType="VarChar(11) NOT NULL" CanBeNull="false" />
+      <Column Name="ConfimId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ConfimTime" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Status" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="PicURL" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="OnlineTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Days" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="OrderID" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="URL" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Type" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.City" Member="City">
+    <Type Name="City">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="ProId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="City_product" Member="product" ThisKey="Id" OtherKey="CityId" Type="product" />
+      <Association Name="City_productDetails" Member="productDetails" ThisKey="Id" OtherKey="CityId" Type="productDetails" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CountryTable" Member="CountryTable">
+    <Type Name="CountryTable">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Association Name="CountryTable_product" Member="product" ThisKey="Id" OtherKey="CountryId" Type="product" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VisaList" Member="VisaList">
+    <Type Name="VisaList">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="CreateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="AdminId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Status" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CountryId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="pic" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="WorkingDay" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="StayDays" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Entry" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Interview" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="EffectiveDays" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Prompt" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Stuff" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="OccupationType" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Notice" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PageInfo" Member="PageInfo">
+    <Type Name="PageInfo">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Pagename" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="Url" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="ParentID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DataState" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="CreateTime" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CssClass" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.product" Member="product">
+    <Type Name="product">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Number" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Intro" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="CreateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Status" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Price" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FavorablePrice" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PriceComment" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Reason" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Special" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Days" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="GroupDays" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Include" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Knows" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Point" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="[Join]" Member="Join" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="ChildrenComment" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Type" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CityId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CityName" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="CountryId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CountryName" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="ProID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProName" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="ConfimID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ConfimTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Pcover" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Association Name="City_product" Member="City" ThisKey="CityId" OtherKey="Id" Type="City" IsForeignKey="true" />
+      <Association Name="CountryTable_product" Member="CountryTable" ThisKey="CountryId" OtherKey="Id" Type="CountryTable" IsForeignKey="true" />
+      <Association Name="Province_product" Member="Province" ThisKey="ProID" OtherKey="Id" Type="Province" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.productComment" Member="productComment">
+    <Type Name="productComment">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ProductId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Content" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="ToUserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.productDetails" Member="productDetails">
+    <Type Name="productDetails">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ProductId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="DaysType" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Content" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Rice" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Hotel" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="ParkName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ParkInto" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="Shopping" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="ShoppingContent" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="CityId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CityName" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="VisitTime" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Remark" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="Pic" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Association Name="City_productDetails" Member="City" ThisKey="CityId" OtherKey="Id" Type="City" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.productPics" Member="productPics">
+    <Type Name="productPics">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ProductId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreateTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Url" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="Type" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="DetailsId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.productSchedule" Member="productSchedule">
+    <Type Name="productSchedule">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="productId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="DayName" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Price" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Person" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Reduce" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Province" Member="Province">
+    <Type Name="Province">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="CountryId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Province_product" Member="product" ThisKey="Id" OtherKey="ProID" Type="product" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Strategy" Member="Strategy">
+    <Type Name="Strategy">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CityId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CityName" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="CountryId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CountryName" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="ProID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProName" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Content" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Status" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Confimld" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ConfimTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Verification" Member="Verification">
+    <Type Name="Verification">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CreateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Status" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="MobileCode" Type="System.String" DbType="VarChar(4)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VisaApplication" Member="VisaApplication">
+    <Type Name="VisaApplication">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CreateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Status" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="TraveIDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Reserve" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ReaName" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="Sex" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Mobile" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="Remark" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Users" Member="Users">
+    <Type Name="Users">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Mobile" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Pass" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="CreateTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Status" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Function Name="dbo.DelById" Method="DelById">
+    <Parameter Name="in_Id" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.VLS_SQ" Method="VLS_SQ">
+    <ElementType Name="VLS_SQResult">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Status" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="TraveIDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Reserve" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ReaName" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="Sex" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Mobile" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="Remark" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetProductAdd" Method="GetProductAdd">
+    <Parameter Name="in_Number" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="in_Title" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="in_Intro" Type="System.String" DbType="VarChar(200)" />
+    <Parameter Name="in_CreateTime" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="in_UserId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="in_Status" Type="System.Int32" DbType="Int" />
+    <Parameter Name="in_Price" Type="System.Int32" DbType="Int" />
+    <Parameter Name="in_FavorablePrice" Type="System.Int32" DbType="Int" />
+    <Parameter Name="in_PriceComment" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="in_Reason" Type="System.String" DbType="VarChar(200)" />
+    <Parameter Name="in_Special" Type="System.String" DbType="VarChar(200)" />
+    <Parameter Name="in_Days" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="in_GroupDays" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="in_Include" Type="System.String" DbType="Text" />
+    <Parameter Name="in_Knows" Type="System.String" DbType="Text" />
+    <Parameter Name="in_Point" Type="System.String" DbType="Text" />
+    <Parameter Name="in_Join" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="in_ChildrenComment" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="in_Type" Type="System.Int32" DbType="Int" />
+    <Parameter Name="in_CityId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="in_CityName" Type="System.String" DbType="VarChar(30)" />
+    <Parameter Name="in_CountryId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="in_CountryName" Type="System.String" DbType="VarChar(30)" />
+    <Parameter Name="in_ProID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="in_ProName" Type="System.String" DbType="VarChar(30)" />
+    <Parameter Name="in_ConfimID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="in_ConfimTime" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="in_Pcover" Type="System.String" DbType="VarChar(200)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.Proc_Get" Method="Proc_Get">
+    <ElementType Name="Proc_GetResult">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Number" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Intro" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="CreateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Status" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Price" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FavorablePrice" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PriceComment" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Reason" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Special" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Days" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="GroupDays" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Include" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Knows" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Point" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="[Join]" Member="Join" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="ChildrenComment" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Type" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CityId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CityName" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="CountryId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CountryName" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="ProID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProName" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="ConfimID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ConfimTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Pcover" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.procity" Method="procity">
+    <Parameter Name="in_TypeID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="in_ProId" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.sp_ad_CityForUserRight" Method="sp_ad_CityForUserRight">
+    <Parameter Name="in_ParentID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="sp_ad_CityForUserRightResult">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_ad_CityForUserRightc" Method="sp_ad_CityForUserRightc">
+    <Parameter Name="in_ParentID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="sp_ad_CityForUserRightcResult">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="ProId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_ad_CityForUserRightp" Method="sp_ad_CityForUserRightp">
+    <Parameter Name="in_ParentID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="sp_ad_CityForUserRightpResult">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="CountryId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_ad_HouseType_GetList" Method="sp_ad_HouseType_GetList">
+    <Parameter Name="in_HouseId" Type="System.Int32" DbType="Int" />
+    <ElementType Name="sp_ad_HouseType_GetListResult">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProductId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="DaysType" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Content" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Rice" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Hotel" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="ParkName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ParkInto" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="Shopping" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="ShoppingContent" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="CityId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CityName" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="VisitTime" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Remark" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="Pic" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_ad_ProductInfoList" Method="sp_ad_ProductInfoList">
+    <Parameter Name="in_Type" Type="System.Int32" DbType="Int" />
+    <Parameter Name="in_Title" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="in_StartTime" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="in_EndTime" Type="System.String" DbType="VarChar(20)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.sp_ad_UserAddOpration" Method="sp_ad_UserAddOpration">
+    <Parameter Name="in_UserID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="in_Content" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="in_Mtype" Type="System.Int32" DbType="Int" />
+    <Parameter Name="in_Ip" Type="System.String" DbType="VarChar(20)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.sp_ad_UserLogin" Method="sp_ad_UserLogin">
+    <Parameter Name="Mobile" Parameter="mobile" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="Pass" Parameter="pass" Type="System.String" DbType="Char(32)" />
+    <ElementType Name="sp_ad_UserLoginResult">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Mobile" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Pass" Type="System.String" DbType="Char(32) NOT NULL" CanBeNull="false" />
+      <Column Name="CreateTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Status" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_ad_UserRightCity" Method="sp_ad_UserRightCity">
+    <Parameter Name="in_TypeID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="in_ProId" Type="System.Int32" DbType="Int" />
+    <ElementType Name="sp_ad_UserRightCityResult">
+      <Column Name="城市名称" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="省份名称" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="国家名称" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_ad_UserRightCityInfo" Method="sp_ad_UserRightCityInfo">
+    <Parameter Name="in_TypeID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="in_ProId" Type="System.Int32" DbType="Int" />
+    <ElementType Name="sp_ad_UserRightCityInfoResult">
+      <Column Name="CityId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CityName" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="CountryId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CityName1" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_ad_UserRightCityList" Method="sp_ad_UserRightCityList">
+    <ElementType Name="sp_ad_UserRightCityListResult">
+      <Column Name="num" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="CityId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CityName" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_product_Delete" Method="sp_product_Delete">
+    <Parameter Name="in_Id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="in_Type" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="in_CreatorID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.sp_product_GetModel" Method="sp_product_GetModel">
+    <Parameter Name="in_Id" Type="System.Int32" DbType="Int" />
+    <ElementType Name="sp_product_GetModelResult">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Number" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Intro" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="CreateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Status" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Price" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FavorablePrice" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PriceComment" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Reason" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Special" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Days" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="GroupDays" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Include" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Knows" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Point" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="[Join]" Member="Join" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="ChildrenComment" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Type" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CityId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CityName" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="CountryId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CountryName" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="ProID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProName" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="ConfimID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ConfimTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Pcover" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_product_Update" Method="sp_product_Update">
+    <Parameter Name="in_Number" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="in_Title" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="in_Intro" Type="System.String" DbType="VarChar(200)" />
+    <Parameter Name="in_CreateTime" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="in_UserId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="in_Status" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="in_Price" Type="System.Int32" DbType="Int" />
+    <Parameter Name="in_FavorablePrice" Type="System.Int32" DbType="Int" />
+    <Parameter Name="in_PriceComment" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="in_Reason" Type="System.String" DbType="VarChar(200)" />
+    <Parameter Name="in_Special" Type="System.String" DbType="VarChar(200)" />
+    <Parameter Name="in_Days" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="in_GroupDays" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="in_Include" Type="System.String" DbType="Text" />
+    <Parameter Name="in_Knows" Type="System.String" DbType="Text" />
+    <Parameter Name="in_Point" Type="System.String" DbType="Text" />
+    <Parameter Name="in_Join" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="in_ChildrenComment" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="in_Type" Type="System.Int32" DbType="Int" />
+    <Parameter Name="in_CityId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="in_CityName" Type="System.String" DbType="VarChar(30)" />
+    <Parameter Name="in_CountryId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="in_CountryName" Type="System.String" DbType="VarChar(30)" />
+    <Parameter Name="in_ProID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="in_ProName" Type="System.String" DbType="VarChar(30)" />
+    <Parameter Name="in_ConfimID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="in_ConfimTime" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="in_Pcover" Type="System.String" DbType="VarChar(200)" />
+    <Parameter Name="in_Id" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.sp_productDetails_Add" Method="sp_productDetails_Add">
+    <Parameter Name="in_ProductId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="in_CreateTime" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="in_DaysType" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="in_Content" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="in_Rice" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="in_Hotel" Type="System.String" DbType="VarChar(500)" />
+    <Parameter Name="in_ParkName" Type="System.String" DbType="VarChar(500)" />
+    <Parameter Name="in_ParkInto" Type="System.String" DbType="VarChar(500)" />
+    <Parameter Name="in_Shopping" Type="System.String" DbType="VarChar(500)" />
+    <Parameter Name="in_ShoppingContent" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="in_CityId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="in_CityName" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="in_VisitTime" Type="System.Int32" DbType="Int" />
+    <Parameter Name="in_Remark" Type="System.String" DbType="VarChar(200)" />
+    <Parameter Name="in_Pic" Type="System.String" DbType="VarChar(200)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.sp_productDetails_GetModel" Method="sp_productDetails_GetModel">
+    <Parameter Name="in_Id" Type="System.Int32" DbType="Int" />
+    <ElementType Name="sp_productDetails_GetModelResult">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProductId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="DaysType" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Content" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Rice" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Hotel" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="ParkName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ParkInto" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="Shopping" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="ShoppingContent" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="CityId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CityName" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="VisitTime" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Remark" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="Pic" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_productDetails_Update" Method="sp_productDetails_Update">
+    <Parameter Name="in_ProductId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="in_CreateTime" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="in_DaysType" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="in_Content" Type="System.String" DbType="VarChar(200)" />
+    <Parameter Name="in_Rice" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="in_Hotel" Type="System.String" DbType="VarChar(500)" />
+    <Parameter Name="in_ParkName" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="in_ParkInto" Type="System.String" DbType="VarChar(500)" />
+    <Parameter Name="in_Shopping" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="in_ShoppingContent" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="in_CityId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="in_CityName" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="in_VisitTime" Type="System.Int32" DbType="Int" />
+    <Parameter Name="in_Remark" Type="System.String" DbType="VarChar(200)" />
+    <Parameter Name="in_Pic" Type="System.String" DbType="VarChar(200)" />
+    <Parameter Name="in_Id" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.sp_Users_Login" Method="sp_Users_Login">
+    <Parameter Name="in_Id" Type="System.Int32" DbType="Int" />
+    <ElementType Name="sp_Users_LoginResult">
+      <Column Name="" Member="Column1" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_VisaApplication_GetAllList" Method="sp_VisaApplication_GetAllList">
+    <Parameter Name="in_Type" Type="System.Int32" DbType="Int" />
+    <Parameter Name="in_ReaName" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="in_StartTime" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="in_EndTime" Type="System.String" DbType="VarChar(20)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.sp_VisaList_GetAllList" Method="sp_VisaList_GetAllList">
+    <Parameter Name="in_Type" Type="System.Int32" DbType="Int" />
+    <Parameter Name="in_Title" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="in_StartTime" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="in_EndTime" Type="System.String" DbType="VarChar(20)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.sq_CityTTT" Method="sq_CityTTT">
+    <ElementType Name="sq_CityTTTResult">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="ProId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sq_Country" Method="sq_Country">
+    <ElementType Name="sq_CountryResult">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sq_Provice" Method="sq_Provice">
+    <ElementType Name="sq_ProviceResult">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="CountryId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.user_pr" Method="user_pr">
+    <Parameter Name="Mobile" Parameter="mobile" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="Pass" Parameter="pass" Type="System.String" DbType="VarChar(20)" />
+    <ElementType Name="user_prResult">
+      <Column Name="" Member="Column1" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.VL_Get" Method="VL_Get">
+    <ElementType Name="VL_GetResult">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="CreateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="AdminId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Status" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CountryId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="pic" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="WorkingDay" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="StayDays" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Entry" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Interview" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="EffectiveDays" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Prompt" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Stuff" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="OccupationType" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Notice" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+    </ElementType>
+  </Function>
+</Database>
