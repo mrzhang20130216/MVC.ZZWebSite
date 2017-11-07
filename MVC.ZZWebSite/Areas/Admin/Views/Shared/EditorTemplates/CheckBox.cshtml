@@ -1,0 +1,12 @@
+﻿@{
+    var name = ViewData.TemplateInfo.HtmlFieldPrefix;
+    var val = ViewData.TemplateInfo.FormattedModelValue.ToString();
+}
+<input type="checkbox"
+    id="@name" name="@name"
+    @{ 
+        if(!(string.IsNullOrEmpty(val)||val=="0"))
+        {
+        @:checked='checked'
+        }
+    } value="1"/>

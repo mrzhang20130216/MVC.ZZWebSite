@@ -1,0 +1,12 @@
+﻿@Scripts.Render("~/ckeditor/ckeditor.js")
+<script type="text/javascript">
+    $(document).ready(function () {
+        CKEDITOR.config.filebrowserImageUploadUrl = "@Url.Action("Upload", "Home", new {maxwidth=800 })";
+    });
+</script>
+<textarea  
+ id="@ViewData.TemplateInfo.HtmlFieldPrefix"
+ name="@ViewData.TemplateInfo.HtmlFieldPrefix" 
+ class="ckeditor">
+ @Model
+ </textarea>

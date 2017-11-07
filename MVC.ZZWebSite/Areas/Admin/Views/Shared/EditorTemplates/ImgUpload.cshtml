@@ -1,0 +1,49 @@
+﻿@using System.Text.RegularExpressions
+@using MVC.ZZCommon;
+@{
+    ImportScript("~/scripts/ajaxupload.3.6.js");
+    var name = ViewData.TemplateInfo.HtmlFieldPrefix;
+    var value = ViewData.TemplateInfo.FormattedModelValue.ToString();
+    var guid = ParamHelper.GetString(ViewData["Guid"]);
+    var url = Url.Action("Upload", "Index");
+    var img = "img_" + name;
+    var btn = "btn_" + name;
+}
+<script src="~/Scripts/ajaxupload.3.6.js"></script>
+@if (string.IsNullOrEmpty(value))
+{
+    <img id="@img" alt="预览图" style="max-width:200px;max-height:150px;clear:both;display:none;" />
+}
+else
+{
+    <img id="@img" alt="预览图" style="max-width:200px;max-height:150px;clear:both;" src="@value" />
+}
+<br />
+<input id="@name" name="@name" type="text" value="@value" />
+<input id="@btn" type="button" value="上传" />
+<script type="text/javascript">
+    function createUploader() {
+        new AjaxUpload("#@btn", {
+            action: "@url",
+            responseType: "json",
+            data: { guid:"@guid" },
+            onSubmit: function (file, ext) {
+                //上传验证
+            },
+    onComplete: function (file, data) {
+                if (data.message == "success") {
+                    $("#@name").val(data.path);
+                    $("#@img").attr("src", data.path);
+                    $("#@img").show();
+                } else {
+                    alert(data.message);
+                }
+            }
+        });
+    }
+    createUploader();
+    $("#@name").change(function () {
+        var val = $(this).val();
+        $("#@img").attr("src", val);
+    });
+</script>

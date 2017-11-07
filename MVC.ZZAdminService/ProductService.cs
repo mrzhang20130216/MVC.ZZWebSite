@@ -22,44 +22,6 @@ namespace MVC.ZZAdminService
         }
 
         /// <summary>
-        /// 分页条件查询
-        /// </summary>
-        /// <param name="query"></param>
-        /// <returns></returns>
-        public IQueryable<product> LoadSearchData(ProductQuery query)
-        {
-
-            var temp = (
-                  from m in Table
-                  select m
-                        );
-            //_DbSession.BaseUserRepository.LoadEntities(u => true);
-
-            //首先过滤产品名称
-
-            if (!string.IsNullOrEmpty(query.Title))
-            {
-                temp = temp.Where<product>(u => u.Title.Contains(query.Title));  //like '%mmm%'
-            }
-            if (!string.IsNullOrEmpty(query.Edate))
-            {
-                DateTime Eda = Convert.ToDateTime(query.Edate);
-                temp = temp.Where<product>(u => u.ConfimTime <= Eda);
-            }
-            if (!string.IsNullOrEmpty(query.Bdate))
-            {
-                DateTime Bda = Convert.ToDateTime(query.Bdate);
-                temp = temp.Where<product>(u => u.ConfimTime >= Bda);
-            }
-            
-            query.Total = temp.Count();
-
-            return temp.OrderBy(u => u.Id).Skip(query.PageSize * (query.PageIndex - 1)).Take(query.PageSize);
-
-        }
-
-
-        /// <summary>
         /// 新增产品
         /// </summary>
         /// <param name="model"></param>
@@ -87,6 +49,26 @@ namespace MVC.ZZAdminService
             DB.SubmitChanges();
         }
 
+        public void Edit(product model)
+        {
+            var pro = Table.FirstOrDefault(p => p.Id == model.Id);
+            pro.Title = model.Title??string.Empty;
+            pro.Number = model.Number ?? string.Empty;
+            pro.Price = model.Price;
+            pro.Knows = model.Knows ?? string.Empty;
+            pro.Include = model.Include ?? string.Empty;
+            pro.ChildrenComment = model.ChildrenComment ?? string.Empty;
+            pro.Days = model.Days ?? string.Empty;
+            pro.GroupDays = model.GroupDays ?? string.Empty;
+            pro.FavorablePrice = model.FavorablePrice;
+            pro.Join = model.Join ?? string.Empty;
+            pro.Knows = model.Knows ?? string.Empty;
+            pro.Reason = model.Reason ?? string.Empty;
+            pro.Special = model.Special ?? string.Empty;
+            Scope.SubmitChanges();
+           
+        }
+
         /// <summary>
         /// 根据id查询产品
         /// </summary>
@@ -97,7 +79,19 @@ namespace MVC.ZZAdminService
             return Table.SingleOrDefault(a => a.Id == id);
         }
 
+        public bool Delete(int id)
+        {
+            var news = Table.FirstOrDefault(p => p.Id == id);
+            if (news == null)
+                return false;
+            return Delete(news);
+        }
+        public virtual bool Delete(product model)
+        {
+            Table.DeleteOnSubmit(model);DB.SubmitChanges();
+            return true;
+        }
 
-       
+
     }
 }

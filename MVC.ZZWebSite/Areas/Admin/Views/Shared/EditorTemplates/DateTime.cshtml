@@ -1,0 +1,10 @@
+﻿@{
+    @Scripts.Render("~/Scripts/DatePicker/WdatePicker.js");
+    var name = ViewData.TemplateInfo.HtmlFieldPrefix;
+    var val = ViewData.TemplateInfo.FormattedModelValue.ToString();
+    if(string.IsNullOrEmpty(val))
+    {
+        val = DateTime.Now.ToString("yyyy-MM-dd");
+    }
+}
+<input type="text" name="@name" id="@name" value="@val" onclick="WdatePicker()" />

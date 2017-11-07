@@ -24,6 +24,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <WebGreaseLibPath>..\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -43,6 +44,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.4.1.9004, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.1\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
       <Private>True</Private>
@@ -76,6 +81,10 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.5.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
       <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
       <Private>True</Private>
@@ -93,6 +102,10 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
@@ -100,6 +113,10 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="WebGrease, Version=1.5.2.14234, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Web.Razor">
@@ -394,6 +411,7 @@
     <Content Include="assets\js\additional-methods.min.js" />
     <Content Include="assets\js\bootbox.min.js" />
     <Content Include="assets\js\bootstrap-colorpicker.min.js" />
+    <Content Include="assets\js\bootstrap-datetimepicker.min.css" />
     <Content Include="assets\js\bootstrap-tag.min.js" />
     <Content Include="assets\js\bootstrap-wysiwyg.min.js" />
     <Content Include="assets\js\bootstrap.min.js" />
@@ -443,6 +461,7 @@
     <Content Include="assets\js\select2.min.js" />
     <Content Include="assets\js\typeahead-bs2.min.js" />
     <Content Include="assets\js\x-editable\ace-editable.min.js" />
+    <Content Include="assets\js\bootstrap-datetimepicker.min.js" />
     <Content Include="assets\js\x-editable\bootstrap-editable.min.js" />
     <Content Include="assets\laydate\laydate.js" />
     <Content Include="assets\laydate\need\laydate.css" />
@@ -461,6 +480,267 @@
     <Content Include="assets\layer\skin\default\loading-2.gif" />
     <Content Include="assets\layer\skin\layer.css" />
     <Content Include="assets\layer\skin\layer.ext.css" />
+    <Content Include="assets\layui\css\layui.css" />
+    <Content Include="assets\layui\css\layui.mobile.css" />
+    <Content Include="assets\layui\css\modules\code.css" />
+    <Content Include="assets\layui\css\modules\laydate\default\laydate.css" />
+    <Content Include="assets\layui\css\modules\layer\default\icon-ext.png" />
+    <Content Include="assets\layui\css\modules\layer\default\icon.png" />
+    <Content Include="assets\layui\css\modules\layer\default\layer.css" />
+    <Content Include="assets\layui\css\modules\layer\default\loading-0.gif" />
+    <Content Include="assets\layui\css\modules\layer\default\loading-1.gif" />
+    <Content Include="assets\layui\css\modules\layer\default\loading-2.gif" />
+    <Content Include="assets\layui\images\face\0.gif" />
+    <Content Include="assets\layui\images\face\1.gif" />
+    <Content Include="assets\layui\images\face\10.gif" />
+    <Content Include="assets\layui\images\face\11.gif" />
+    <Content Include="assets\layui\images\face\12.gif" />
+    <Content Include="assets\layui\images\face\13.gif" />
+    <Content Include="assets\layui\images\face\14.gif" />
+    <Content Include="assets\layui\images\face\15.gif" />
+    <Content Include="assets\layui\images\face\16.gif" />
+    <Content Include="assets\layui\images\face\17.gif" />
+    <Content Include="assets\layui\images\face\18.gif" />
+    <Content Include="assets\layui\images\face\19.gif" />
+    <Content Include="assets\layui\images\face\2.gif" />
+    <Content Include="assets\layui\images\face\20.gif" />
+    <Content Include="assets\layui\images\face\21.gif" />
+    <Content Include="assets\layui\images\face\22.gif" />
+    <Content Include="assets\layui\images\face\23.gif" />
+    <Content Include="assets\layui\images\face\24.gif" />
+    <Content Include="assets\layui\images\face\25.gif" />
+    <Content Include="assets\layui\images\face\26.gif" />
+    <Content Include="assets\layui\images\face\27.gif" />
+    <Content Include="assets\layui\images\face\28.gif" />
+    <Content Include="assets\layui\images\face\29.gif" />
+    <Content Include="assets\layui\images\face\3.gif" />
+    <Content Include="assets\layui\images\face\30.gif" />
+    <Content Include="assets\layui\images\face\31.gif" />
+    <Content Include="assets\layui\images\face\32.gif" />
+    <Content Include="assets\layui\images\face\33.gif" />
+    <Content Include="assets\layui\images\face\34.gif" />
+    <Content Include="assets\layui\images\face\35.gif" />
+    <Content Include="assets\layui\images\face\36.gif" />
+    <Content Include="assets\layui\images\face\37.gif" />
+    <Content Include="assets\layui\images\face\38.gif" />
+    <Content Include="assets\layui\images\face\39.gif" />
+    <Content Include="assets\layui\images\face\4.gif" />
+    <Content Include="assets\layui\images\face\40.gif" />
+    <Content Include="assets\layui\images\face\41.gif" />
+    <Content Include="assets\layui\images\face\42.gif" />
+    <Content Include="assets\layui\images\face\43.gif" />
+    <Content Include="assets\layui\images\face\44.gif" />
+    <Content Include="assets\layui\images\face\45.gif" />
+    <Content Include="assets\layui\images\face\46.gif" />
+    <Content Include="assets\layui\images\face\47.gif" />
+    <Content Include="assets\layui\images\face\48.gif" />
+    <Content Include="assets\layui\images\face\49.gif" />
+    <Content Include="assets\layui\images\face\5.gif" />
+    <Content Include="assets\layui\images\face\50.gif" />
+    <Content Include="assets\layui\images\face\51.gif" />
+    <Content Include="assets\layui\images\face\52.gif" />
+    <Content Include="assets\layui\images\face\53.gif" />
+    <Content Include="assets\layui\images\face\54.gif" />
+    <Content Include="assets\layui\images\face\55.gif" />
+    <Content Include="assets\layui\images\face\56.gif" />
+    <Content Include="assets\layui\images\face\57.gif" />
+    <Content Include="assets\layui\images\face\58.gif" />
+    <Content Include="assets\layui\images\face\59.gif" />
+    <Content Include="assets\layui\images\face\6.gif" />
+    <Content Include="assets\layui\images\face\60.gif" />
+    <Content Include="assets\layui\images\face\61.gif" />
+    <Content Include="assets\layui\images\face\62.gif" />
+    <Content Include="assets\layui\images\face\63.gif" />
+    <Content Include="assets\layui\images\face\64.gif" />
+    <Content Include="assets\layui\images\face\65.gif" />
+    <Content Include="assets\layui\images\face\66.gif" />
+    <Content Include="assets\layui\images\face\67.gif" />
+    <Content Include="assets\layui\images\face\68.gif" />
+    <Content Include="assets\layui\images\face\69.gif" />
+    <Content Include="assets\layui\images\face\7.gif" />
+    <Content Include="assets\layui\images\face\70.gif" />
+    <Content Include="assets\layui\images\face\71.gif" />
+    <Content Include="assets\layui\images\face\8.gif" />
+    <Content Include="assets\layui\images\face\9.gif" />
+    <Content Include="assets\layui\layui.all.js" />
+    <Content Include="assets\layui\layui.js" />
+    <Content Include="assets\layui\lay\modules\carousel.js" />
+    <Content Include="assets\layui\lay\modules\code.js" />
+    <Content Include="assets\layui\lay\modules\element.js" />
+    <Content Include="assets\layui\lay\modules\flow.js" />
+    <Content Include="assets\layui\lay\modules\form.js" />
+    <Content Include="assets\layui\lay\modules\jquery.js" />
+    <Content Include="assets\layui\lay\modules\laydate.js" />
+    <Content Include="assets\layui\lay\modules\layedit.js" />
+    <Content Include="assets\layui\lay\modules\layer.js" />
+    <Content Include="assets\layui\lay\modules\laypage.js" />
+    <Content Include="assets\layui\lay\modules\laytpl.js" />
+    <Content Include="assets\layui\lay\modules\mobile.js" />
+    <Content Include="assets\layui\lay\modules\table.js" />
+    <Content Include="assets\layui\lay\modules\tree.js" />
+    <Content Include="assets\layui\lay\modules\upload.js" />
+    <Content Include="assets\layui\lay\modules\util.js" />
+    <Content Include="ckeditor\adapters\jquery.js" />
+    <Content Include="ckeditor\ckeditor.js" />
+    <Content Include="ckeditor\ckeditor_basic.js" />
+    <Content Include="ckeditor\ckeditor_basic_source.js" />
+    <Content Include="ckeditor\ckeditor_source.js" />
+    <Content Include="ckeditor\config.js" />
+    <Content Include="ckeditor\contents.css" />
+    <Content Include="ckeditor\images\spacer.gif" />
+    <Content Include="ckeditor\lang\en.js" />
+    <Content Include="ckeditor\lang\zh-cn.js" />
+    <Content Include="ckeditor\lang\zh.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\dialogs\a11yhelp.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\lang\en.js" />
+    <Content Include="ckeditor\plugins\a11yhelp\lang\he.js" />
+    <Content Include="ckeditor\plugins\about\dialogs\about.js" />
+    <Content Include="ckeditor\plugins\about\dialogs\logo_ckeditor.png" />
+    <Content Include="ckeditor\plugins\adobeair\plugin.js" />
+    <Content Include="ckeditor\plugins\ajax\plugin.js" />
+    <Content Include="ckeditor\plugins\autogrow\plugin.js" />
+    <Content Include="ckeditor\plugins\bbcode\plugin.js" />
+    <Content Include="ckeditor\plugins\clipboard\dialogs\paste.js" />
+    <Content Include="ckeditor\plugins\colordialog\dialogs\colordialog.js" />
+    <Content Include="ckeditor\plugins\devtools\lang\en.js" />
+    <Content Include="ckeditor\plugins\devtools\plugin.js" />
+    <Content Include="ckeditor\plugins\dialog\dialogDefinition.js" />
+    <Content Include="ckeditor\plugins\div\dialogs\div.js" />
+    <Content Include="ckeditor\plugins\docprops\dialogs\docprops.js" />
+    <Content Include="ckeditor\plugins\docprops\plugin.js" />
+    <Content Include="ckeditor\plugins\find\dialogs\find.js" />
+    <Content Include="ckeditor\plugins\flash\dialogs\flash.js" />
+    <Content Include="ckeditor\plugins\flash\images\placeholder.png" />
+    <Content Include="ckeditor\plugins\forms\dialogs\button.js" />
+    <Content Include="ckeditor\plugins\forms\dialogs\checkbox.js" />
+    <Content Include="ckeditor\plugins\forms\dialogs\form.js" />
+    <Content Include="ckeditor\plugins\forms\dialogs\hiddenfield.js" />
+    <Content Include="ckeditor\plugins\forms\dialogs\radio.js" />
+    <Content Include="ckeditor\plugins\forms\dialogs\select.js" />
+    <Content Include="ckeditor\plugins\forms\dialogs\textarea.js" />
+    <Content Include="ckeditor\plugins\forms\dialogs\textfield.js" />
+    <Content Include="ckeditor\plugins\forms\images\hiddenfield.gif" />
+    <Content Include="ckeditor\plugins\iframedialog\plugin.js" />
+    <Content Include="ckeditor\plugins\iframe\dialogs\iframe.js" />
+    <Content Include="ckeditor\plugins\iframe\images\placeholder.png" />
+    <Content Include="ckeditor\plugins\image\dialogs\image.js" />
+    <Content Include="ckeditor\plugins\link\dialogs\anchor.js" />
+    <Content Include="ckeditor\plugins\link\dialogs\link.js" />
+    <Content Include="ckeditor\plugins\link\images\anchor.gif" />
+    <Content Include="ckeditor\plugins\liststyle\dialogs\liststyle.js" />
+    <Content Include="ckeditor\plugins\pagebreak\images\pagebreak.gif" />
+    <Content Include="ckeditor\plugins\pastefromword\filter\default.js" />
+    <Content Include="ckeditor\plugins\pastetext\dialogs\pastetext.js" />
+    <Content Include="ckeditor\plugins\placeholder\dialogs\placeholder.js" />
+    <Content Include="ckeditor\plugins\placeholder\lang\en.js" />
+    <Content Include="ckeditor\plugins\placeholder\lang\he.js" />
+    <Content Include="ckeditor\plugins\placeholder\placeholder.gif" />
+    <Content Include="ckeditor\plugins\placeholder\plugin.js" />
+    <Content Include="ckeditor\plugins\scayt\dialogs\options.js" />
+    <Content Include="ckeditor\plugins\scayt\dialogs\toolbar.css" />
+    <Content Include="ckeditor\plugins\showblocks\images\block_address.png" />
+    <Content Include="ckeditor\plugins\showblocks\images\block_blockquote.png" />
+    <Content Include="ckeditor\plugins\showblocks\images\block_div.png" />
+    <Content Include="ckeditor\plugins\showblocks\images\block_h1.png" />
+    <Content Include="ckeditor\plugins\showblocks\images\block_h2.png" />
+    <Content Include="ckeditor\plugins\showblocks\images\block_h3.png" />
+    <Content Include="ckeditor\plugins\showblocks\images\block_h4.png" />
+    <Content Include="ckeditor\plugins\showblocks\images\block_h5.png" />
+    <Content Include="ckeditor\plugins\showblocks\images\block_h6.png" />
+    <Content Include="ckeditor\plugins\showblocks\images\block_p.png" />
+    <Content Include="ckeditor\plugins\showblocks\images\block_pre.png" />
+    <Content Include="ckeditor\plugins\smiley\dialogs\smiley.js" />
+    <Content Include="ckeditor\plugins\smiley\images\angel_smile.gif" />
+    <Content Include="ckeditor\plugins\smiley\images\angry_smile.gif" />
+    <Content Include="ckeditor\plugins\smiley\images\broken_heart.gif" />
+    <Content Include="ckeditor\plugins\smiley\images\confused_smile.gif" />
+    <Content Include="ckeditor\plugins\smiley\images\cry_smile.gif" />
+    <Content Include="ckeditor\plugins\smiley\images\devil_smile.gif" />
+    <Content Include="ckeditor\plugins\smiley\images\embaressed_smile.gif" />
+    <Content Include="ckeditor\plugins\smiley\images\envelope.gif" />
+    <Content Include="ckeditor\plugins\smiley\images\heart.gif" />
+    <Content Include="ckeditor\plugins\smiley\images\kiss.gif" />
+    <Content Include="ckeditor\plugins\smiley\images\lightbulb.gif" />
+    <Content Include="ckeditor\plugins\smiley\images\omg_smile.gif" />
+    <Content Include="ckeditor\plugins\smiley\images\regular_smile.gif" />
+    <Content Include="ckeditor\plugins\smiley\images\sad_smile.gif" />
+    <Content Include="ckeditor\plugins\smiley\images\shades_smile.gif" />
+    <Content Include="ckeditor\plugins\smiley\images\teeth_smile.gif" />
+    <Content Include="ckeditor\plugins\smiley\images\thumbs_down.gif" />
+    <Content Include="ckeditor\plugins\smiley\images\thumbs_up.gif" />
+    <Content Include="ckeditor\plugins\smiley\images\tounge_smile.gif" />
+    <Content Include="ckeditor\plugins\smiley\images\whatchutalkingabout_smile.gif" />
+    <Content Include="ckeditor\plugins\smiley\images\wink_smile.gif" />
+    <Content Include="ckeditor\plugins\specialchar\dialogs\specialchar.js" />
+    <Content Include="ckeditor\plugins\specialchar\lang\en.js" />
+    <Content Include="ckeditor\plugins\stylesheetparser\plugin.js" />
+    <Content Include="ckeditor\plugins\styles\styles\default.js" />
+    <Content Include="ckeditor\plugins\tableresize\plugin.js" />
+    <Content Include="ckeditor\plugins\tabletools\dialogs\tableCell.js" />
+    <Content Include="ckeditor\plugins\table\dialogs\table.js" />
+    <Content Include="ckeditor\plugins\templates\dialogs\templates.js" />
+    <Content Include="ckeditor\plugins\templates\templates\default.js" />
+    <Content Include="ckeditor\plugins\templates\templates\images\template1.gif" />
+    <Content Include="ckeditor\plugins\templates\templates\images\template2.gif" />
+    <Content Include="ckeditor\plugins\templates\templates\images\template3.gif" />
+    <Content Include="ckeditor\plugins\uicolor\dialogs\uicolor.js" />
+    <Content Include="ckeditor\plugins\uicolor\lang\en.js" />
+    <Content Include="ckeditor\plugins\uicolor\lang\he.js" />
+    <Content Include="ckeditor\plugins\uicolor\plugin.js" />
+    <Content Include="ckeditor\plugins\uicolor\uicolor.gif" />
+    <Content Include="ckeditor\plugins\uicolor\yui\assets\hue_bg.png" />
+    <Content Include="ckeditor\plugins\uicolor\yui\assets\hue_thumb.png" />
+    <Content Include="ckeditor\plugins\uicolor\yui\assets\picker_mask.png" />
+    <Content Include="ckeditor\plugins\uicolor\yui\assets\picker_thumb.png" />
+    <Content Include="ckeditor\plugins\uicolor\yui\assets\yui.css" />
+    <Content Include="ckeditor\plugins\uicolor\yui\yui.js" />
+    <Content Include="ckeditor\plugins\wsc\dialogs\ciframe.html" />
+    <Content Include="ckeditor\plugins\wsc\dialogs\tmpFrameset.html" />
+    <Content Include="ckeditor\plugins\wsc\dialogs\wsc.css" />
+    <Content Include="ckeditor\plugins\wsc\dialogs\wsc.js" />
+    <Content Include="ckeditor\plugins\xml\plugin.js" />
+    <Content Include="ckeditor\skins\kama\dialog.css" />
+    <Content Include="ckeditor\skins\kama\editor.css" />
+    <Content Include="ckeditor\skins\kama\icons.png" />
+    <Content Include="ckeditor\skins\kama\icons_rtl.png" />
+    <Content Include="ckeditor\skins\kama\images\dialog_sides.gif" />
+    <Content Include="ckeditor\skins\kama\images\dialog_sides.png" />
+    <Content Include="ckeditor\skins\kama\images\dialog_sides_rtl.png" />
+    <Content Include="ckeditor\skins\kama\images\mini.gif" />
+    <Content Include="ckeditor\skins\kama\images\noimage.png" />
+    <Content Include="ckeditor\skins\kama\images\sprites.png" />
+    <Content Include="ckeditor\skins\kama\images\sprites_ie6.png" />
+    <Content Include="ckeditor\skins\kama\images\toolbar_start.gif" />
+    <Content Include="ckeditor\skins\kama\skin.js" />
+    <Content Include="ckeditor\skins\kama\templates.css" />
+    <Content Include="ckeditor\skins\office2003\dialog.css" />
+    <Content Include="ckeditor\skins\office2003\editor.css" />
+    <Content Include="ckeditor\skins\office2003\icons.png" />
+    <Content Include="ckeditor\skins\office2003\icons_rtl.png" />
+    <Content Include="ckeditor\skins\office2003\images\dialog_sides.gif" />
+    <Content Include="ckeditor\skins\office2003\images\dialog_sides.png" />
+    <Content Include="ckeditor\skins\office2003\images\dialog_sides_rtl.png" />
+    <Content Include="ckeditor\skins\office2003\images\mini.gif" />
+    <Content Include="ckeditor\skins\office2003\images\noimage.png" />
+    <Content Include="ckeditor\skins\office2003\images\sprites.png" />
+    <Content Include="ckeditor\skins\office2003\images\sprites_ie6.png" />
+    <Content Include="ckeditor\skins\office2003\skin.js" />
+    <Content Include="ckeditor\skins\office2003\templates.css" />
+    <Content Include="ckeditor\skins\v2\dialog.css" />
+    <Content Include="ckeditor\skins\v2\editor.css" />
+    <Content Include="ckeditor\skins\v2\icons.png" />
+    <Content Include="ckeditor\skins\v2\icons_rtl.png" />
+    <Content Include="ckeditor\skins\v2\images\dialog_sides.gif" />
+    <Content Include="ckeditor\skins\v2\images\dialog_sides.png" />
+    <Content Include="ckeditor\skins\v2\images\dialog_sides_rtl.png" />
+    <Content Include="ckeditor\skins\v2\images\mini.gif" />
+    <Content Include="ckeditor\skins\v2\images\noimage.png" />
+    <Content Include="ckeditor\skins\v2\images\sprites.png" />
+    <Content Include="ckeditor\skins\v2\images\sprites_ie6.png" />
+    <Content Include="ckeditor\skins\v2\images\toolbar_start.gif" />
+    <Content Include="ckeditor\skins\v2\skin.js" />
+    <Content Include="ckeditor\skins\v2\templates.css" />
+    <Content Include="ckeditor\themes\default\theme.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\easyui.css" />
@@ -470,6 +750,7 @@
     <Content Include="Content\style.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="HtmlPage1.html" />
     <Content Include="images\agreed-.png" />
     <Content Include="images\body-bg.png" />
     <Content Include="images\code.png" />
@@ -491,6 +772,7 @@
     <Content Include="images\user.png" />
     <Content Include="scripts\ai.0.22.9-build00167.js" />
     <Content Include="scripts\ai.0.22.9-build00167.min.js" />
+    <Content Include="scripts\ajaxupload.3.6.js" />
     <Content Include="scripts\Area.js" />
     <Content Include="scripts\bootstrap.js" />
     <Content Include="scripts\bootstrap.min.js" />
@@ -545,6 +827,18 @@
     <Content Include="Areas\Admin\Views\VisaList\Index.cshtml" />
     <Content Include="Areas\Admin\Views\VisaApplication\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Product\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\CheckBox.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\CkEditor.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\DateTime.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\ImgUpload.cshtml" />
+    <Content Include="ckeditor\ckeditor.pack" />
+    <Content Include="Areas\Admin\Views\ProductDetails\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductDetails\Edit.cshtml" />
+    <Content Include="assets\layui\font\iconfont.eot" />
+    <Content Include="assets\layui\font\iconfont.svg" />
+    <Content Include="assets\layui\font\iconfont.ttf" />
+    <Content Include="assets\layui\font\iconfont.woff" />
+    <Content Include="Areas\Admin\Views\ProductDetails\Create.cshtml" />
     <None Include="scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="scripts\dragDivResize.js" />
     <Content Include="scripts\easyloader.js" />
@@ -569,13 +863,16 @@
     <Content Include="scripts\modernizr-2.6.2.js" />
     <Content Include="scripts\respond.min.js" />
     <Content Include="scripts\Validform_v5.3.2_min.js" />
+    <Content Include="Upfile\1.jpg" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\IndexController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProductDetailsController.cs" />
     <Compile Include="Areas\Admin\Controllers\VisaApplicationController.cs" />
     <Compile Include="Areas\Admin\Controllers\VisaListController.cs" />
     <Compile Include="Global.asax.cs">

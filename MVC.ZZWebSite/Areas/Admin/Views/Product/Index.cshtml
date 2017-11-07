@@ -5,8 +5,9 @@
 <script src="~/scripts/jquery-1.8.2.min.js"></script>
 <script src="~/scripts/jquery.easyui.min.js"></script>
 <script src="~/scripts/jquery.easyui.plus.js"></script>
-<link href="~/Content/easyui.css" rel="stylesheet" />
+
 <script src="~/scripts/home.js"></script>
+<script src="~/assets/layui/layui.js"></script>
 <div class="page-content clearfix">
     <div id="Member_Ratings">
         <div class="d_Confirm_Order_style">
@@ -15,24 +16,23 @@
                 <div class="title_names">搜索查询</div>
                 <ul class="search_content clearfix">
 
-                    @using (Ajax.BeginForm("AjaxSearchPost", new RouteValueDictionary { { "id", "" } }, new AjaxOptions { UpdateTargetId = "articles", InsertionMode = InsertionMode.Replace }, new RouteValueDictionary { { "id", "searchForm" } }))
-                    {
-                        <li><label class="l_f">关键字</label><input  name="title" id="title" type="text" class="text_add" placeholder="输入关键字" style=" width:200px" /></li>
-                        <li><label class="l_f">开始时间</label><input class="inline laydate-icon" id="start" runat="server" style="margin-left: 10px;" /></li>
-                        <li><label class="l_f">结束时间</label><input class="inline laydate-icon" id="end" runat="server" style="margin-left: 10px;" /></li>
+                   @using (Html.BeginForm("Index", ViewContext.RouteData.GetRequiredString("Controller"), new RouteValueDictionary { { "id", "" } }, FormMethod.Get))
+                   {
+                        <li><label class="l_f">关键字</label><input value="@Request.QueryString["kword"]" name="title" id="title" type="text" class="text_add" placeholder="输入关键字" style=" width:200px" /></li>
+                        <li><label class="l_f">开始时间</label>
+                          
+                      <input name="date" id="date" lay-verify="date" placeholder="yyyy-MM-dd"
+                              autocomplete="off" class="layui-input" type="text">
+                    
+                    </li>
+                        <li><label class="l_f">结束时间</label>
+                    <input name="date" id="edate" lay-verify="edate" placeholder="yyyy-MM-dd"
+                                autocomplete="off" class="layui-input" type="text">
+                    </li>
                         <li style="width:90px;">
                             @*<div class="btn_search" id="btn_searchP" style="cursor: pointer;" onclick="SClick()">搜索</div>*@
                             <input type="submit" value="搜索(S)"  class="btn_search" id="btn_searchP" accesskey="S" />
                         </li>
-                        @*<span>标题：</span>
-                        <input type="text" name="title" id="title" style="width:120px" />
-                        <span>作者：</span>
-                        <input type="text" name="author" id="author" style="width:120px" />
-                        <span>（如：Webdiyer）</span>
-                        <span>来源：</span>
-                        <input type="text" name="source" id="source" style="width:120px" />
-                        <span>（如：吴起热线）</span>
-                        <input type="submit" value="搜索(S)" accesskey="S" />*@
                     }
                    
                 </ul>
@@ -40,7 +40,7 @@
             @*操作框*@
             <div class="border clearfix">
                 <span class="l_f">
-                    <a href="/product/addlist.aspx" class="btn btn-warning"><i class="icon-plus"></i>添加产品</a>
+                    <a href="" class="btn btn-warning"><i class="icon-plus"></i>添加产品</a>
                     <a href="javascript:;" id="administrator_add" class="btn btn-warning add"><i class="icon-plus"></i>添加线路</a>
                     <a href="javascript:;" onclick="member_del(this,'0')" class="btn btn-danger"><i class="icon-trash"></i>批量删除</a>
                 </span>
@@ -50,14 +50,14 @@
             <div class="table_menu_list">
                 @using (Html.BeginForm())
             {
-                    <table id="List"  class="table table-striped table-bordered table-hover" id="sample-table">
+                    <table id="List"  class="table table-striped table-bordered table-hover" >
                         <thead>
                             <tr>
                                 <th>产品编号</th>
                                 <th>产品标题</th>
                                 <th>创建时间</th>
                                 <th>价格</th>
-                                <th>有效时间</th>
+                                <th>操作</th>
                             </tr>
                             </thead>
                         <tbody>
@@ -66,15 +66,31 @@
                                 <tr>
                                     <td>@item.Number</td>
                                     <td>@item.Title </td>
-                                    <td>@item.CreateTime</td>
-                                    <td>@item.Price</td>
-                                    <td>@item.ConfimTime</td>
+                                    <td>@item.CreateTime.ToString("yyyy-MM-dd")</td>
+                                    <td>￥@item.Price</td>
+                                    <td> 
+                                        @*<a onclick="member_Confirm(this,'')" href="javascript:;" title="审核" class="btn btn-xs btn-success" >
+                                             <i class="icon-ok bigger-120"></i>
+                                        </a>*@
+                                        @{
+                                            string ul = "/Admin/Product/Edit?ProId="+item.Id;
+                                        }
+                                        <a title="编辑产品信息" href="@ul" class="btn btn-xs btn-info" >
+                                            <i class="icon-edit bigger-120"></i>
+                                        </a>
+
+                                        <a title="编辑行程信息" href="javascript:;" onclick="visPro(this,'@item.Id')" class="btn btn-xs btn-info">
+                                            <i class="icon-edit bigger-120"></i>
+                                        </a>
+                                        <a title="删除" href="javascript:;" onclick="member_del(this,'@item.Id')" class="btn btn-xs btn-warning">
+                                             <i class="icon-trash  bigger-120"></i>
+                                         </a>
+                                     </td>
                                 </tr>
                             }
                         </tbody>
                         </table>
                 }
-
             </div>
             <div class="pagination">
                 @Html.Pager(Model, new PagerOptions { PageIndexParameterName = "page"})
@@ -82,3 +98,58 @@
 </div>
     </div>
     </div>
+
+<script>
+    //$('.add').on('click', function () {
+        //layer.open({
+        //    type: 2,
+        //    title: '添加渠道',
+        //    maxmin: true,
+        //    shadeClose: false,
+        //    area: ['600px', '400px'],
+        //    content: '/product/add.aspx',
+        //});
+    //});
+
+    function visPro(obj, id) {
+        layer.open({
+            type: 2,
+            title: '详细行程',
+            maxmin: true,
+            shadeClose: false,
+            area: ['1100px', '500px'],
+            content: '/Admin/ProductDetails/Index?ProductID='+id,
+        });
+    }
+
+    function member_del(obj, id) {
+        layer.confirm('确认要删除吗？删除不可恢复！', function (index) {
+            $.ajax({
+                type: "post",
+                url: "/Admin/Product/Delete",
+                contentType: "application/json;charset=utf-8",
+                data:"{'id':"+id+"}",
+                dataType: "json",
+                success: function (result) {
+                    layer.msg('删除成功!', { icon: 1, time: 1000 });
+                    setTimeout(function () {
+                        self.location = '/Admin/Product/Index';
+                    }, 1000);
+                }
+            });
+        });
+    }
+</script>
+<script>
+    layui.use('laydate', function () {
+        var laydate = layui.laydate;
+        //常规用法
+        laydate.render({
+            elem: '#date'
+        });
+        laydate.render({
+            elem: '#edate'
+        });
+    });
+    
+</script>

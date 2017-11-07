@@ -1,7 +1,191 @@
-﻿
+﻿@model MVC.ZZAdminModels.product
 @{
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit</h2>
+<script type="text/javascript">
+    $(function () {
+        $("#btnSave").click(function () {
+            $.ajax({
+                url: "/Admin/Product/Edit",
+                type: "Post",
+                data: $("form").serialize(),
+                dataType: "json",
+                success: function (data) {
+                    if (data == 1) {
+                        layer.msg('修改成功!', { icon: 1, time: 1000 });
+                        setTimeout(function () {
+                            self.location = '/Admin/Product/Index';
+                        }, 1000);
+                    }
+                    else {
+                        layer.msg('修改失败！请稍后再试!', { icon: 1, time: 1000 });
+                    }
+                }
+            });
+        });
+        $("#btnReturn").click(function () {
+            window.parent.frameReturnByClose();
+        });
+    });
 
+    ///打开产品线路创建页面
+    function AddProDe(obj, id) {
+        layer.open({
+            type: 2,
+            title: '添加行程',
+            maxmin: true,
+            shadeClose: false,
+            area: ['1100px', '500px'],
+            content: '/Admin/ProductDetails/Create',//?ProductID=' + id
+        });
+    }
+    
+</script>
+<div class="margin clearfix">
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(model => model.Id)
+    <div class="stystems_style">
+
+        <div class="tab-content">
+            <div id="home" class="tab-pane active">
+                <div class="form-group">
+                    <label class="col-sm-1 control-label no-padding-right" for="form-field-1"><i>*</i>产品编号： </label>
+                    <div class="col-sm-9">
+                        @Html.EditorFor(model => model.Number, new { htmlAttributes = new { @class = "col-xs-10" } })
+                    </div>
+                    <a href="javascript:;" onclick="AddProDe( this,@Model.Id)" id="administrator_add" class="btn btn-warning add"><i class="icon-plus"></i>添加线路</a>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-1 control-label no-padding-right" for="form-field-1"><i>*</i>产品标题： </label>
+                    <div class="col-sm-9">
+                        @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "col-xs-10" } })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-1 control-label no-padding-right" for="form-field-1"><i></i>产品简介： </label>
+                    <div class="col-sm-9">
+                        @Html.TextAreaFor(model => model.Intro, 5, 90, new { })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-1 control-label no-padding-right" for="form-field-1"><i>*</i>标准价格： </label>
+                    <div class="col-sm-9">
+                        @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "col-xs-10" } })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-1 control-label no-padding-right" for="form-field-1"><i>*</i>价格： </label>
+                    <div class="col-sm-9">
+                        @Html.EditorFor(model => model.FavorablePrice, new { htmlAttributes = new { @class = "col-xs-10" } })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-1 control-label no-padding-right" for="form-field-1"><i>*</i>封面： </label>
+                    <div class="col-sm-9">
+                        @Html.EditorFor(model => model.FavorablePrice, new { htmlAttributes = new { @class = "col-xs-10" } })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-1 control-label no-padding-right" for="form-field-1"><i>*</i>所在地： </label>
+                    <div class="col-sm-9">
+                        @Html.EditorFor(model => model.FavorablePrice, new { htmlAttributes = new { @class = "col-xs-10" } })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-1 control-label no-padding-right" for="form-field-1"><i>*</i>价格说明： </label>
+                    <div class="col-sm-9">
+                        @Html.EditorFor(model => model.PriceComment, new { htmlAttributes = new { @class = "col-xs-10" } })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-1 control-label no-padding-right" for="form-field-1"><i>*</i>报名方式： </label>
+                    <div class="col-sm-9">
+                        @Html.EditorFor(model => model.Join, new { htmlAttributes = new { @class = "col-xs-10" } })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-1 control-label no-padding-right" for="form-field-1"><i>*</i>儿童说明： </label>
+                    <div class="col-sm-9">
+                        @Html.EditorFor(model => model.ChildrenComment, new { htmlAttributes = new { @class = "col-xs-10" } })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-1 control-label no-padding-right" for="form-field-1"><i>*</i>推荐理由： </label>
+                    <div class="col-sm-9">
+                        @Html.EditorFor(model => model.Reason, new { htmlAttributes = new { @class = "col-xs-10" } })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-1 control-label no-padding-right" for="form-field-1"><i>*</i>特别优惠： </label>
+                    <div class="col-sm-9">
+                        @Html.EditorFor(model => model.Special, new { htmlAttributes = new { @class = "col-xs-10" } })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-1 control-label no-padding-right" for="form-field-1"><i>*</i>天数： </label>
+                    <div class="col-sm-9">
+                        @Html.EditorFor(model => model.Days, new { htmlAttributes = new { @class = "col-xs-10" } })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-1 control-label no-padding-right" for="form-field-1"><i>*</i>适用团期： </label>
+                    <div class="col-sm-9">
+                        @Html.EditorFor(model => model.GroupDays, new { htmlAttributes = new { @class = "col-xs-10" } })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-1 control-label no-padding-right" for="form-field-1"><i>*</i>费用须知： </label>
+                    <div class="col-sm-9">
+                        @Html.EditorFor(model => model.Include, new { htmlAttributes = new { @class = "col-xs-10" } })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-1 control-label no-padding-right" for="form-field-1"><i>*</i>须知提示： </label>
+                    <div class="col-sm-9">
+                        @Html.EditorFor(model => model.Knows, new { htmlAttributes = new { @class = "col-xs-10" } })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-1 control-label no-padding-right" for="form-field-1"><i>*</i>温馨提示： </label>
+                    <div class="col-sm-9">
+                        @Html.EditorFor(model => model.Point, new { htmlAttributes = new { @class = "col-xs-10" } })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-1 control-label no-padding-right" for="form-field-1"><i>*</i>产品类别： </label>
+                    <div class="col-sm-9">
+                        @Html.EditorFor(model => model.FavorablePrice, new { htmlAttributes = new { @class = "col-xs-10" } })
+                    </div>
+                </div>
+
+                <div class="Button_operation">
+                    <input id="btnSave" type="button" value="保存"  class="btn btn-primary radius"/>
+                    <a href="/Admin/Product/Index" class="btn btn-default radius" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+</div>
+    
+
+                

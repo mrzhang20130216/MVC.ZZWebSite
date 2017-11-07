@@ -1,0 +1,117 @@
+﻿@model PagedList<MVC.ZZAdminModels.productDetails>
+
+<script src="~/scripts/jquery-1.8.2.min.js"></script>
+<script src="~/scripts/jquery.easyui.min.js"></script>
+<script src="~/scripts/jquery.easyui.plus.js"></script>
+<link href="~/Content/easyui.css" rel="stylesheet" />
+<script src="~/scripts/home.js"></script>
+
+@{
+    if (Model.Count == 0)
+    {
+         <div class="search_style" style="width:1000px;margin-left:50px;">
+             <div class="title_names">@ViewBag.productTitle</div>
+              <span>该产品暂时没有行程信息</span>
+            
+         </div>
+    }
+    else
+    {
+        <div class="search_style" style="width:1000px;margin-left:50px;">
+            
+            <div class="title_names">@ViewBag.productTitle</div>
+            <span class="r_f">共：<b>@Model.Count</b>条行程信息</span>
+        </div>
+        using (Html.BeginForm())
+        {
+        <div class="table_menu_list">
+            <table class="table table-striped table-bordered table-hover" id="sample-table">
+                <thead>
+                    <tr>
+                        <th>行程天数</th>
+                        <th>内容</th>
+                        <th>用餐</th>
+                        <th>住宿</th>
+                        <th>景点图片</th>
+                        <th>景点名称</th>
+                        <th>景点简介</th>
+                        <th>购物</th>
+                        <th>购物内容</th>
+                        <th>城市名称</th>
+                        <th>参观时间</th>
+                        <th>备注</th>
+                        <th>编辑操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                    <tr>
+                        <td>第 @item.DaysType 天</td>
+                        <td>@item.Content</td>
+                        <td>@item.Rice</td>
+                        <td>@item.Hotel</td>
+                        <td>@item.Pic</td>
+                        <td>@item.ParkName</td>
+                        <td>@item.ParkInto</td>
+                        <td>@item.Shopping</td>
+                        <td>@item.ShoppingContent</td>
+                        <td>@item.CityName</td>
+                        <td>@item.VisitTime</td>
+                        <td>@item.Remark</td>
+                        <td>
+                            <a title="编辑" href="javascript:;"  onclick="visProDe(this,'@item.Id')" class="btn btn-xs btn-info">
+                                <i class="icon-edit bigger-120"></i>
+                            </a>
+                            <a title="删除" href="javascript:;" onclick="member_del(this,'@item.Id')" class="btn btn-xs btn-warning">
+                                <i class="icon-trash  bigger-120"></i>
+                            </a>
+                        </td>
+
+                    </tr>
+                    }
+                </tbody>
+            </table>
+            </div>
+            <div class="pagination">
+                @Html.Pager(Model, new PagerOptions { PageIndexParameterName = "page" })
+            </div>
+            }
+            }
+            }
+
+
+<script>
+    function visProDe(obj, id) {
+        layer.open({
+            type: 2,
+            title: '详细行程-详细',
+            maxmin: true,
+            shadeClose: false,
+            area: ['1090px', '400px'],
+            content: '/Admin/ProductDetails/Edit?ProId='+id,
+            end: function () {
+                location.reload();
+            }
+        });
+        
+    }
+    function member_del(obj, id) {
+        var pid = @ViewBag.ProductID;
+        layer.confirm('确认要删除吗？删除不可恢复！', function (index) {
+            $.ajax({
+                type: "post",
+                url: "/Admin/ProductDetails/Delete",
+                contentType: "application/json;charset=utf-8",
+                data: "{'id':" + id + "}",
+                dataType: "json",
+                success: function (result) {
+                    layer.msg('删除成功!', { icon: 1, time: 1000 });
+                    setTimeout(function () {
+                        self.location = '/Admin/ProductDetails/Index?ProductID=' + pid;
+                    }, 1000);
+                }
+            });
+        });
+    }
+</script>

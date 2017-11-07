@@ -85,5 +85,88 @@ namespace MVC.ZZWebSite.Areas.Admin.Controllers
         //    a.Register(u);
         //    return View();
         //}
+
+
+        public ActionResult Upload()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Upload(FormCollection form)
+        {
+            string message = string.Empty, path = string.Empty;
+            // if (!IsAuthenticated) message = "需上传文件,请先登录";
+
+            if (Request.Files.Count == 0) message = "未检测到提交文件";
+
+            Upfile upfile = new Upfile();
+            upfile.Key = ParamHelper.GetInt(Request["key"]);
+            //upfile.Location = ParamHelper.GetInt(Request["location"]);
+            upfile.Module = (short)ParamHelper.GetInt(Request["module"]);
+            // if (!string.IsNullOrEmpty(Request["guid"])) upfile.Guid = Guid.Parse(Request["guid"]);
+            //upfile.AccountID = AccountInfo.ID;
+            //存储目录
+            var Prefix = "~/upfile/";
+            var Path = Prefix;
+            var SavePath = Server.MapPath(Path);
+            if (!System.IO.Directory.Exists(SavePath))
+                System.IO.Directory.CreateDirectory(SavePath);
+
+            HttpPostedFileBase post = Request.Files[0];
+            if (post.ContentLength == 0)
+                message = "无效文件";
+            if (post.ContentLength > 0x100000)
+                message = "图片大小超过限制 1MB";
+            var FileName = "";
+            //判断文件类型
+            string extension = System.IO.Path.GetExtension(post.FileName).ToLower();
+            if (string.IsNullOrEmpty(message) && Regex.IsMatch(extension, @".(jpg)", RegexOptions.IgnoreCase))//限制上传类型
+            {//图片文件
+                FileName = SavePath + DateTime.Now.ToString("yyMMddHHmmssffff") + extension;
+                try
+                {
+                    post.SaveAs(FileName);
+                }
+                catch
+                {
+                    System.IO.File.Delete(FileName);
+                    message = "文件上传出错";
+                }
+                var width = ParamHelper.GetInt(Request["width"]);//图片宽度
+                var height = ParamHelper.GetInt(Request["height"]);//图片高度
+                if (width > 0 && height > 0)//重置图片
+                    ImageHelper.Thumbnails(FileName, FileName, width, height, "#ffffff", "#ffffff");
+                else
+                {
+                    //压缩图片
+                    var maxWidth = ParamHelper.GetInt(Request["maxwidth"]);//最大宽度
+                    var maxHeight = ParamHelper.GetInt(Request["maxheight"]);//最大高度
+                    if (maxWidth > 0 || maxHeight > 0)
+                        ImageHelper.Compress(FileName, maxWidth, maxHeight);//压缩图片
+                    else
+                    {
+
+                        maxHeight = 1200; maxWidth = 1200;
+                        ImageHelper.Compress(FileName, maxWidth, maxHeight);//压缩图片
+                    }
+                }
+                var watermark = Request["watermark"];//是否水印
+                upfile.Path = FileName.Replace(Server.MapPath(Prefix), "").Replace("\\", "/");
+                //using (UpfileService service = new UpfileService())
+                //{
+                //    service.Create(upfile);
+                //}
+                path = "/upfile/" + upfile.Path;
+            }
+            else if (string.IsNullOrEmpty(message))
+            {
+                message = "不支持 " + extension + "格式文件上传";
+            }
+
+            if (!string.IsNullOrEmpty(Request["CKEditor"]))//如果是CKEditor 提交
+                return Content(string.Format("<script type=\"text/javascript\">window.parent.CKEDITOR.tools.callFunction({0},'{1}','{2}') ;</script>",
+                                                    Request["CKEditorFuncNum"], path, string.Empty));
+            return Json(new { message = string.IsNullOrEmpty(message) ? "success" : message, path = path }, "text/html", JsonRequestBehavior.AllowGet);
+        }
     }
 }
